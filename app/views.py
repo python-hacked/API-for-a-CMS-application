@@ -3,9 +3,11 @@ from django.contrib.auth.models import User
 from .models import Post, Like
 from .serializers import UserSerializer, PostSerializer, LikeSerializer
 
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
@@ -20,6 +22,7 @@ class PostViewSet(viewsets.ModelViewSet):
             return Post.objects.all()
         else:
             return Post.objects.filter(is_public=True)
+
 
 class LikeViewSet(viewsets.ModelViewSet):
     queryset = Like.objects.all()
